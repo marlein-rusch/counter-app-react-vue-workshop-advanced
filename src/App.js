@@ -75,7 +75,7 @@ export default class App extends Component {
                             )
                             :
                             <div className="col">
-                                Wups, your count is 0. Increase it to see what happens!
+                                Wups, your count is {count}. Increase it to see what happens!
                             </div>
                         }
                     </div>
