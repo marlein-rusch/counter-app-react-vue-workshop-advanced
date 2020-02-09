@@ -23,7 +23,7 @@ The ternary operator (or 'conditional operator') is a shorter way in JavaScript 
 
 In `App.js`, this logic is used to display one part of JSX or the other, depending on the length of the `batmanShowsToRender` array.
 
-## 4: Why do we check if the lenght of the batmanShowsToRender array is longer than 0?
+## 4: Why do we check if the length of the batmanShowsToRender array is longer than 0?
 
 We are essentially doing this:
 `batmanShowsToRender.length > 0 ? batmanShowsToRender.map(blabla) : <div>JSX Alternative text</div>" `. That is: we map over the batmanShowsToRender array and do blabla with each element if it contains at least 1 element, and otherwise we display 'JSX Alternative text'.
