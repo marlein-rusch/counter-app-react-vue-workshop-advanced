@@ -19,15 +19,15 @@ What happens here? We apply the filter method to the `batmanShows` array. The fi
 
 ## 3: Can you explain why the JavaScript ternary operator is used for these lines of JSX?
 
-The ternary operator (or 'conditional operator') is a shorter way in JavaScript to write a simple if-else statement. It will evaluate the statement before the `?`, and if that statement is true, it will return the first part, otherwise the second part. For example: `console.log(3 > 1 ? "3 is bigger than 1" : "1 is bigger than 3")`. It means: if `3 > 1`, then log "3 is bigger than 1" to the console, otherwise log "1 is bigger than 3" to the console.
+The ternary operator (or 'conditional operator') is a shorter way in JavaScript to write a simple if-else statement. It will evaluate the statement before the `?`, and if that statement is true, it will return the first part, otherwise the second part. For example: `console.log(3 > 1 ? "3 is bigger than 1" : "1 is bigger than 3")`. It means: if `3 > 1`, then log "3 is bigger than 1" to the console, otherwise log "1 is bigger than 3" to the console. FYI: copy this line of code and paste is in the console of your chrome developer tools to try it out yourself.
 
-In `App.js`, this logic is used to display one part oz JSX or the other, depending on the length of the `batmanShowsToRender` array.
+In `App.js`, this logic is used to display one part of JSX or the other, depending on the length of the `batmanShowsToRender` array.
 
-## 4: Why do we check if the lenght of the array is longer than 0?
+## 4: Why do we check if the lenght of the batmanShowsToRender array is longer than 0?
 
 We are essentially doing this:
-`batmanShowsToRender.length > 0 ? batmanShowsToRender.map(blabla) : <div>JSX BLABLA</div>" `
+`batmanShowsToRender.length > 0 ? batmanShowsToRender.map(blabla) : <div>JSX Alternative text</div>" `. That is: we map over the batmanShowsToRender array and do blabla with each element if it contains at least 1 element, and otherwise we display 'JSX Alternative text'.
 
-If we do not use the conditional statement, and we only type `batmanShowsToRender.map(blabla)`, then we will just map over an empty array as long as our movies have not been fetched yet and/or our count is still 0, and then nothing is displayed on the sreen. That is not very informative to our website users.
+If we do not use this conditional statement, and we only type `batmanShowsToRender.map(blabla)`, then we will will map over the array even when it's empty, which results in an empty render, i.e. nothing is displayed on screen. That is not very informative to our website users.
 
 If you remember well, when a component is mounted, it goes through the lifecycle methods in a specific order. First, the constructor() method is called, then the render() method, and thén the componentDidMount() method is called, which is where we fetch the batman movies. This means that on the first render of the App component, no badman movies have been fetched yet. For this reason we create an initial empty `batmanShows` array in the state, so that in our render method, we can say: as long as the `batmanShowsToRender` array is empty (because the movies have not been fetched yet and/or the user count is 0), then render JSX with a piece of text that says 'wups, blablabla'.
